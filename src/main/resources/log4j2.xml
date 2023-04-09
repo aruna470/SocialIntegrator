@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+    <Appenders>
+
+        <!-- console appender -->
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %c{1} - %msg%n"/>
+        </Console>
+
+        <!-- file appender -->
+        <File name="ApiReqResLog" fileName="${log-path}/review-engine-api-req-res.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%msg%n"/>
+        </File>
+        <File name="ActLog" fileName="${log-path}/review-engine-act.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%msg%n"/>
+        </File>
+        <File name="AppLog" fileName="${log-path}/review-engine-app.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="ApiReqResLog" level="info" additivity="false">
+            <AppenderRef ref="ApiReqResLog" level="info"/>
+        </Logger>
+        <Logger name="AppLog" level="info" additivity="false">
+            <AppenderRef ref="AppLog" level="info"/>
+        </Logger>
+        <Logger name="ActLog" level="info" additivity="false">
+            <AppenderRef ref="ActLog" level="info"/>
+        </Logger>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console-log"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+   social-integrator:
+    image: aruna470/social-integrator:latest
+    restart: on-failure
+    environment:
+      - dbhost=192.168.1.5
+      - dbport=3306
+      - dbname=SocialIntegrator
+      - dbuser=root
+      - dbpass=
+    ports:
+      - 8080:8080
